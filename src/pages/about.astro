@@ -1,5 +1,17 @@
 ---
+const pageTitle = 'About Me';
 
+const identify = {
+  firstName: 'Kim',
+  middelName: 'John',
+  lastName: 'Petersen',
+  onlineName: 'BartoghDK',
+  country: 'Denmark',
+  occupation: 'Technical Writer',
+  hobbies: ['photography', 'birdwatching', 'badminton'],
+};
+
+const skills = ['HTML', 'CSS', 'JavaScript', 'React', 'Astro', 'Writing Docs'];
 ---
 
 <html lang="en">
@@ -8,14 +20,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>{pageTitle}</title>
   </head>
   <body>
     <a href="/">Home</a>
     <a href="/blog">Blog</a>
     <a href="/about">About Me</a>
 
-    <h1>About Me</h1>
+    <h1>{pageTitle}</h1>
     <h2>... and my brand new learning Astro site!</h2>
     <p>
       I am currently working my way through Astro's intrtoductory tutorial on
@@ -27,5 +39,31 @@
       This site be updated as I complete more of the tutorial, so keep checking
       up on it, to see how my journey is going!
     </p>
+
+    <h2>Here are a few facts about me:</h2>
+
+    <ul>
+      <li>
+        My name is {identify.firstname}
+        {identify.middelName}
+        {identify.lastName}
+      </li>
+      <li>
+        I live in {identify.country} and I work as a {identify.occupation}.
+      </li>
+      {
+        identify.hobbies.length >= 2 && (
+          <li>
+            Two of my hobbies are {identify.hobbies[0]} and{' '}
+            {identify.hobbies[2]}
+          </li>
+        )
+      }
+    </ul>
+
+    <h2>My Skills Are</h2>
+    <ul>
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
   </body>
 </html>
